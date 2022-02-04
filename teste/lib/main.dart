@@ -9,7 +9,7 @@ class MinhasTarefas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AddTarefa(),
+      home: Home(),
     );
   }
 }
@@ -30,57 +30,17 @@ class AddTarefa extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: const BorderSide(
-                    width: 3,
-                    color: Colors.green,
-                  ),
-                ),
-                elevation: 10,
-                shadowColor: Colors.amber,
-                child: TextField(
-                  controller: _novatarefa,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    decorationColor: Colors.green,
-                  ),
-                  decoration: const InputDecoration(
-                      iconColor: Colors.amberAccent,
-                      icon: Icon(Icons.app_registration_rounded),
-                      hintText: 'Digite sua nova tarefa',
-                      labelText: 'Nova tarefa'),
-                ),
-              ),
+            CampodeTexto(
+              label: 'Tarefa',
+              hint: 'Digite sua nova tarefa',
+              icone: Icons.playlist_add_check_sharp,
+              imput: _novatarefa,
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: const BorderSide(
-                    width: 3,
-                    color: Colors.green,
-                  ),
-                ),
-                elevation: 10,
-                shadowColor: Colors.amber,
-                child: TextField(
-                  controller: _novadata,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    decorationColor: Colors.green,
-                  ),
-                  decoration: const InputDecoration(
-                      iconColor: Colors.amberAccent,
-                      icon: Icon(Icons.app_registration_rounded),
-                      hintText: 'Dara de entrega',
-                      labelText: 'Dia/mês/ano'),
-                ),
-              ),
+            CampodeTexto(
+              label: 'Data de entrega',
+              hint: 'Dia/mês/ano',
+              icone: Icons.date_range_outlined,
+              imput: _novadata,
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -96,8 +56,7 @@ class AddTarefa extends StatelessWidget {
                   fixedSize: Size(200, 50),
                 ),
                 onPressed: () {
-                  final String tarefa = _novatarefa.text;
-                  final String data = _novadata.text;
+                  CriarTarefa(context);
                 },
                 label: Text(
                   'Confirmar',
@@ -121,16 +80,70 @@ class AddTarefa extends StatelessWidget {
         foregroundColor: Colors.amber[50],
         actions: const [
           Icon(Icons.search),
-          Padding(padding: EdgeInsets.symmetric(horizontal: 30)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
         ],
+      ),
+    );
+  }
+
+  void CriarTarefa(BuildContext context) {
+    final String tarefa = _novatarefa.text;
+    final String data = _novadata.text;
+    final tarefarecebida = ReceberTarefa(
+      _novatarefa.toString(),
+      _novadata.toString(),
+    );
+    Navigator.pop(context, tarefarecebida);
+  }
+}
+
+class CampodeTexto extends StatelessWidget {
+  const CampodeTexto({this.label, this.hint, this.icone, this.imput});
+  final String? label;
+  final String? hint;
+  final IconData? icone;
+  final TextEditingController? imput;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: const BorderSide(
+            width: 2,
+            color: Colors.green,
+          ),
+        ),
+        elevation: 5,
+        shadowColor: Colors.green[900],
+        child: Container(
+          padding: EdgeInsets.all(5),
+          child: TextField(
+            controller: imput,
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+            decoration: InputDecoration(
+                icon: Icon(
+                  icone,
+                  color: Colors.green,
+                  size: 30,
+                ),
+                labelStyle: TextStyle(color: Colors.black),
+                hintText: hint,
+                labelText: label),
+          ),
+        ),
       ),
     );
   }
 }
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
+  Home({Key? key}) : super(key: key);
+  final List<ReceberTarefa> _tarefas = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,14 +154,12 @@ class Home extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter),
         ),
-        child: Column(
-          children: [
-            ListaTarefa(ReceberTarefa('Correr 100 Km', 'Em uma semana')),
-            ListaTarefa(
-              ReceberTarefa('Finalizar TCC', 'Em um mês'),
-            ),
-          ],
-        ),
+        child: ListView.builder(
+            itemCount: _tarefas.length,
+            itemBuilder: (context, index) {
+              final tarefa = _tarefas[index];
+              return ListaTarefa(tarefa);
+            }),
       ),
       appBar: AppBar(
         title: const Text(
@@ -160,17 +171,26 @@ class Home extends StatelessWidget {
         foregroundColor: Colors.amber[50],
         actions: const [
           Icon(Icons.search),
-          Padding(padding: EdgeInsets.symmetric(horizontal: 30)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
         ],
       ),
       floatingActionButton: Stack(children: [
         Positioned(
           child: FloatingActionButton.extended(
             autofocus: true,
-            onPressed: () {},
+            onPressed: () {
+              final Future future = Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return AddTarefa();
+                }),
+              ).then((tarefas) {
+                _tarefas.add(tarefas);
+              });
+            },
             splashColor: Colors.amber[50],
             icon: const Icon(Icons.add),
-            backgroundColor: Colors.lightGreen[800],
+            backgroundColor: Colors.green[900],
             foregroundColor: Colors.amber[50],
             label: const Text(
               'Nova tarefa',
@@ -197,7 +217,8 @@ class ListaTarefa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shadowColor: Colors.amber,
+      shadowColor: Colors.green,
+      elevation: 5,
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.green, width: 2),
@@ -211,7 +232,7 @@ class ListaTarefa extends StatelessWidget {
           trailing: const Icon(Icons.delete_forever),
         ),
       ),
-      color: Colors.amber[50],
+      color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
