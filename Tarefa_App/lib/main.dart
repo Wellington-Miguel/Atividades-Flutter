@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-void main() => runApp(MinhasTarefas());
+void main() => runApp(const MinhasTarefas());
 
 class MinhasTarefas extends StatelessWidget {
   const MinhasTarefas({Key? key}) : super(key: key);
@@ -22,12 +21,6 @@ class AddTarefa extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.lime, Colors.lightGreenAccent],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-        ),
         child: Column(
           children: [
             CampodeTexto(
@@ -37,7 +30,7 @@ class AddTarefa extends StatelessWidget {
               imput: _novatarefa,
             ),
             CampodeTexto(
-              label: 'Data de entrega',
+              label: 'Prazo',
               hint: 'Dia/mês/ano',
               icone: Icons.date_range_outlined,
               imput: _novadata,
@@ -80,7 +73,7 @@ class AddTarefa extends StatelessWidget {
         foregroundColor: Colors.amber[50],
         actions: const [
           Icon(Icons.search),
-          Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
         ],
       ),
     );
@@ -90,8 +83,8 @@ class AddTarefa extends StatelessWidget {
     final String tarefa = _novatarefa.text;
     final String data = _novadata.text;
     final tarefarecebida = ReceberTarefa(
-      _novatarefa.toString(),
-      _novadata.toString(),
+      tarefa.toString(),
+      data.toString(),
     );
     Navigator.pop(context, tarefarecebida);
   }
@@ -141,26 +134,25 @@ class CampodeTexto extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final List<ReceberTarefa> _tarefas = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.lime, Colors.lightGreenAccent],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-        ),
-        child: ListView.builder(
-            itemCount: _tarefas.length,
-            itemBuilder: (context, index) {
-              final tarefa = _tarefas[index];
-              return ListaTarefa(tarefa);
-            }),
-      ),
+      body: ListView.builder(
+          itemCount: _tarefas.length,
+          itemBuilder: (context, index) {
+            final tarefa = _tarefas[index];
+            return ListaTarefa(tarefa);
+          }),
       appBar: AppBar(
         title: const Text(
           'Minhas tarefas',
@@ -171,21 +163,22 @@ class Home extends StatelessWidget {
         foregroundColor: Colors.amber[50],
         actions: const [
           Icon(Icons.search),
-          Padding(padding: EdgeInsets.symmetric(horizontal: 20)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
         ],
       ),
       floatingActionButton: Stack(children: [
         Positioned(
           child: FloatingActionButton.extended(
-            autofocus: true,
             onPressed: () {
-              final Future future = Navigator.push(
+              final Future<ReceberTarefa?> future = Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
                   return AddTarefa();
                 }),
               ).then((tarefas) {
-                _tarefas.add(tarefas);
+                setState(() {
+                  _tarefas.add(tarefas);
+                });
               });
             },
             splashColor: Colors.amber[50],
@@ -225,8 +218,14 @@ class ListaTarefa extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: ListTile(
-          title: Text(_receberTarefa.tarefa),
-          subtitle: Text(_receberTarefa.data),
+          title: Text(
+            _receberTarefa.tarefa,
+            textDirection: TextDirection.ltr,
+          ),
+          subtitle: Text(
+            _receberTarefa.data,
+            textDirection: TextDirection.ltr,
+          ),
           leading: const Icon(Icons.task),
           iconColor: Colors.green,
           trailing: const Icon(Icons.delete_forever),
