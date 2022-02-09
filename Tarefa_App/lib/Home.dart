@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'ListaTarefa.dart';
 import 'main.dart';
 import 'ReceberTarefa.dart';
+import 'AddTarefa.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);

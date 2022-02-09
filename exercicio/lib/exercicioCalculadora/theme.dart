@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class themecalculator {
+class Themecalculator {
   static final ThemeData light = ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.indigo,
