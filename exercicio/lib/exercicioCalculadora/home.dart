@@ -1,22 +1,53 @@
 import 'package:flutter/material.dart';
+import 'buttonOperator.dart';
+import 'numberButton.dart';
+import 'display.dart';
 
-int easterEgg = 0;
-void ShowEasterEgg(int value, BuildContext context) {
-  easterEgg += value;
-  if (easterEgg >= 2) {
-    easterEgg = 0;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Clique em um número para começar'),
-    ));
-  }
+class Home extends StatefulWidget {
+  const Home({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class _HomeState extends State<Home> {
+  String display = '0';
+
+  String firstnumber = '';
+
+  void pressbutton(String number) {
+    firstnumber += number;
+    setState(() {
+      display = firstnumber;
+    });
+  }
+
+  void clear() {
+    setState(() {
+      display = '0';
+      firstnumber = '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 87.0),
+        child: FloatingActionButton(
+          splashColor: Colors.blue[200],
+          onPressed: () {
+            clear();
+          },
+          child: const Text(
+            'C',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+      ),
       appBar: AppBar(
         leading: const Icon(
           Icons.calculate,
@@ -29,23 +60,52 @@ class Home extends StatelessWidget {
         children: [
           Expanded(
               flex: 3,
-              child: GestureDetector(
-                onTap: () {
-                  ShowEasterEgg(1, context);
-                },
-                child: const Card(
-                  elevation: 5,
-                  margin: EdgeInsets.all(8),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text('Visor'),
-                  ),
-                ),
+              child: Display(
+                display: display,
               )),
-          const Expanded(child: Text('linha')),
-          const Expanded(child: Text('linha')),
-          const Expanded(child: Text('linha')),
-          const Expanded(child: Text('linha')),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                numberButton(number: '7', numberPress: pressbutton),
+                numberButton(number: '8', numberPress: pressbutton),
+                numberButton(number: '9', numberPress: pressbutton),
+                buttonOperator(
+                  operador: 'x',
+                  OperadorCallBack: pressbutton,
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                numberButton(number: '4', numberPress: pressbutton),
+                numberButton(number: '5', numberPress: pressbutton),
+                numberButton(number: '6', numberPress: pressbutton),
+                buttonOperator(
+                  operador: '-',
+                  OperadorCallBack: pressbutton,
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                numberButton(number: '1', numberPress: pressbutton),
+                numberButton(number: '2', numberPress: pressbutton),
+                numberButton(number: '3', numberPress: pressbutton),
+                buttonOperator(
+                  operador: '+',
+                  OperadorCallBack: pressbutton,
+                ),
+              ],
+            ),
+          ),
+          const Expanded(child: Text('')),
         ],
       ),
     );
