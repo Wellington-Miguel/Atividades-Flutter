@@ -32,12 +32,13 @@ class _progressBarState extends State<progressBar> {
                 setState(() {
                   if (porcent <= 100) {
                     porcent += random.nextInt(20);
+                    info = '${porcent.toString()}%';
                   }
                   if (porcent >= 100) {
                     porcent = 100;
                     progresscolor = Colors.green;
+                    info = 'Upload concluído';
                   }
-                  info = '${porcent.toString()}%';
                 });
               },
               child: const Text('Upload'),
