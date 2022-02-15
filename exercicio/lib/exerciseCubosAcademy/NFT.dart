@@ -41,7 +41,7 @@ class Nft extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
               child: Text(
-                'Cada Bored Ape é único e gerado programaticamente a partir de mais de 170 características possíveis, incluindo expressão, headwear, roupas e muito mais. Todos os macacos são narcóticos, mas alguns são mais raros que outros.',
+                'Cada Bored Ape é único e gerado programaticamente a partir de mais de 170 características possíveis, incluindo expressão, headwear, roupas e muito mais. Todos os macacos são legais, mas alguns são mais raros que outros.',
                 textAlign: TextAlign.justify,
                 style: GoogleFonts.rowdies(
                   fontSize: 12,
