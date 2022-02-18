@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 typedef OperadorFuncion = void Function(String);
 
 class buttonOperator extends StatelessWidget {
-  const buttonOperator({
+  IconData iconOperator;
+  buttonOperator({
+    required this.iconOperator,
     Key? key,
     required this.OperadorCallBack,
     required this.operador,

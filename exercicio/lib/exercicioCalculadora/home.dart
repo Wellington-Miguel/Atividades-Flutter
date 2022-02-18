@@ -1,10 +1,15 @@
+import 'package:exercicio/exercicioCalculadora/buttomTheme.dart';
 import 'package:flutter/material.dart';
 import 'buttonOperator.dart';
 import 'numberButton.dart';
 import 'display.dart';
 
 class Home extends StatefulWidget {
-  const Home({
+  bool thememode = true;
+  Function(bool) onpresstheme;
+  Home({
+    required this.onpresstheme,
+    required this.thememode,
     Key? key,
   }) : super(key: key);
 
@@ -53,6 +58,16 @@ class _HomeState extends State<Home> {
           Icons.calculate,
           color: Colors.white,
         ),
+        actions: [
+          buttomTheme(
+              thememode: widget.thememode,
+              onpress: (bool value) {
+                widget.onpresstheme(value);
+                setState(() {
+                  widget.thememode = value;
+                });
+              })
+        ],
         title: const Text('Calculator'),
       ),
       body: Column(
@@ -71,6 +86,7 @@ class _HomeState extends State<Home> {
                 numberButton(number: '8', numberPress: pressbutton),
                 numberButton(number: '9', numberPress: pressbutton),
                 buttonOperator(
+                  iconOperator: Icons.close,
                   operador: 'x',
                   OperadorCallBack: pressbutton,
                 ),
@@ -85,6 +101,7 @@ class _HomeState extends State<Home> {
                 numberButton(number: '5', numberPress: pressbutton),
                 numberButton(number: '6', numberPress: pressbutton),
                 buttonOperator(
+                  iconOperator: Icons.remove,
                   operador: '-',
                   OperadorCallBack: pressbutton,
                 ),
@@ -99,6 +116,7 @@ class _HomeState extends State<Home> {
                 numberButton(number: '2', numberPress: pressbutton),
                 numberButton(number: '3', numberPress: pressbutton),
                 buttonOperator(
+                  iconOperator: Icons.add,
                   operador: '+',
                   OperadorCallBack: pressbutton,
                 ),

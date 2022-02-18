@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'exerciseCubosAcademy/NFT.dart';
+import 'exerciseLayout/NFT.dart';
 
 void main() {
   runApp(
