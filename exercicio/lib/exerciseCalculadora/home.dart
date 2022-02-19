@@ -1,4 +1,4 @@
-import 'package:exercicio/exercicioCalculadora/buttomTheme.dart';
+import 'package:exercicio/exerciseCalculadora/buttomTheme.dart';
 import 'package:flutter/material.dart';
 import 'buttonOperator.dart';
 import 'numberButton.dart';
