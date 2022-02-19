@@ -22,7 +22,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - Você instalou a versão mais recente do SDK Flutter (2.10 ou superio)
 - Você tem uma máquina `<Windows / Linux / Mac>`.
 
-## 🚀 Instalando <Diário_de_bordo:_Flutter>
+## 🚀 Instalando <Diário de bordo: Flutter>
 
 Para instalar o <nome_do_projeto>, siga estas etapas:
 
