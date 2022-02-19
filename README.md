@@ -2,7 +2,7 @@
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
-<center>![Flutter_estudo](https://i.ibb.co/TmBF5td/Logotipo-c-rebro-pensar-psicologia.png)</center>
+![Flutter_estudo](https://i.ibb.co/TmBF5td/Logotipo-c-rebro-pensar-psicologia.png)
 
 > O objetivo desse repositório é armazenar todas as atividades feitas no cusro de Flutter da Cubos Academy em parceria com a Nubank. **Lembrando que esse é um material de estudo não um projeto completo de um app.**
 
