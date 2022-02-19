@@ -1,6 +1,6 @@
-import 'package:exercicio/exerciseAbas/tabFixa.dart';
+import 'package:exercicio/exerciseAbas/catioro.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const tabFixa());
+  runApp(const Catioro());
 }

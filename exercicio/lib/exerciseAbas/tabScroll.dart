@@ -1,17 +1,32 @@
 import 'package:flutter/material.dart';
 
-class tabFixa extends StatefulWidget {
-  const tabFixa({Key? key}) : super(key: key);
+class TabScroll extends StatefulWidget {
+  const TabScroll({Key? key}) : super(key: key);
 
   @override
-  _tabFixaState createState() => _tabFixaState();
+  _TabScrollState createState() => _TabScrollState();
 }
 
-class _tabFixaState extends State<tabFixa> {
-  final tabs = [
-    const Tab(text: 'Cachorros'),
-    const Tab(text: 'Gatos'),
-    const Tab(text: 'Pássaros')
+class _TabScrollState extends State<TabScroll> {
+  final tabs = const [
+    Tab(text: 'Tab 1'),
+    Tab(text: 'Tab 2'),
+    Tab(text: 'Tab 4'),
+    Tab(text: 'Tab 5'),
+    Tab(text: 'Tab 6'),
+    Tab(text: 'Tab 7'),
+    Tab(text: 'Tab 8'),
+    Tab(text: 'Tab 9'),
+  ];
+  final tabBar = [
+    const Center(child: Text('Tab 1')),
+    const Center(child: Text('Tab 2')),
+    const Center(child: Text('Tab 3')),
+    const Center(child: Text('Tab 4')),
+    const Center(child: Text('Tab 5')),
+    const Center(child: Text('Tab 6')),
+    const Center(child: Text('Tab 7')),
+    const Center(child: Text('Tab 8')),
   ];
   @override
   Widget build(BuildContext context) {
@@ -22,15 +37,20 @@ class _tabFixaState extends State<tabFixa> {
         length: tabs.length,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Pet-commerce'),
-            leading: const Icon(
-              Icons.pets,
-              color: Colors.red,
+            title: const Align(
+              child: Text('TabScroll'),
+              alignment: Alignment.center,
             ),
-            backgroundColor: Colors.indigo[400],
+            backgroundColor: Colors.red[400],
             bottom: TabBar(
+              isScrollable: true,
               indicatorColor: Colors.red,
               tabs: tabs,
+            ),
+          ),
+          body: Center(
+            child: TabBarView(
+              children: tabBar,
             ),
           ),
         ),

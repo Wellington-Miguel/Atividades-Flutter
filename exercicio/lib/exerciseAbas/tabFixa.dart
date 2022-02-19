@@ -8,10 +8,10 @@ class tabFixa extends StatefulWidget {
 }
 
 class _tabFixaState extends State<tabFixa> {
-  final tabs = [
-    const Tab(text: 'Cachorros'),
-    const Tab(text: 'Gatos'),
-    const Tab(text: 'Pássaros')
+  final tabs = const [
+    Tab(text: 'Cachorro'),
+    Tab(text: 'Gato'),
+    Tab(text: 'Pássaro'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,21 +35,26 @@ class _tabFixaState extends State<tabFixa> {
           ),
           body: TabBarView(
             children: [
-              Image.asset(
-                'assets/dog.jpg',
-                cacheHeight: 225,
-                cacheWidth: 400,
-                alignment: Alignment.topCenter,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/dog.jpg',
+                  alignment: Alignment.topCenter,
+                ),
               ),
-              Image.asset(
-                'assets/cat.jpg',
-                alignment: Alignment.topCenter,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/cat.jpg',
+                  alignment: Alignment.topCenter,
+                ),
               ),
-              Image.asset(
-                'assets/aves.jpg',
-                cacheHeight: 285,
-                cacheWidth: 500,
-                alignment: Alignment.topCenter,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/aves.jpg',
+                  alignment: Alignment.topCenter,
+                ),
               ),
             ],
           ),
