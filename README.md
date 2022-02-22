@@ -50,21 +50,17 @@ Pessoa que realizou as respostas dos exercícios para este projeto:
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://i.ibb.co/BfDNfjx/foto-wellington.png" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="https://i.ibb.co/BfDNfjx/foto-wellington.png" width="100px;" alt="Foto do WellingtonMiguel no GitHub"/><br>
         <sub>
-          <b>Iuri Silva</b>
+          <b>WellingtonMiguel</b>
         </sub>
       </a>
     </td>
   </tr>
     </table>
-  
-## 😄 Seja um dos contribuidores
-
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+[Licença](https://github.com/Wellington-Miguel/Flutter/blob/c0328f44930b32215dc27b7fcc92f9c95eb60a6e/LICENSE.md)
 
-[⬆ Voltar ao topo](#nome-do-projeto)
+[⬆ Voltar ao topo](#diário-de-bordo-flutter)
