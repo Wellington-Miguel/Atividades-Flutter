@@ -4,7 +4,7 @@
 
 ![Flutter_estudo](https://i.ibb.co/TmBF5td/Logotipo-c-rebro-pensar-psicologia.png)
 
-> O objetivo desse repositório é armazenar todas as atividades feitas no cusro de Flutter da Cubos Academy em parceria com a Nubank. **Lembrando que esse é um material de estudo não um projeto completo de um app.**
+> O objetivo desse repositório é armazenar todas as atividades feitas no cusro de Flutter da Cubos Academy em parceria com a Nubank. **Lembrando que esse é um material de estudo não um projeto completo de um app e todas as questões foram retiradas das aulas da Cubos Academy, não sou de forma alguma o responsável pela criação dos problemas utilizados.**
 
 ## Ajustes e melhorias
 
@@ -24,33 +24,15 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 ## 🚀 Executando exercícios do diário de bordo
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
+Para acessar os exercícios, siga estas etapas:
 
-Linux e macOS:
+- Faça o clone do repositório
+- Cada grupo de exercício terá  seu próprio modo de execusão, consulte o README.md de cada  pasta.
 
-```
-<comando_de_instalação>
-```
 
-Windows:
+## 📫 Contribuindo para Diário de bordo - Flutter
 
-```
-<comando_de_instalação>
-```
-
-## ☕ Usando <nome_do_projeto>
-
-Para usar <nome_do_projeto>, siga estas etapas:
-
-```
-<exemplo_de_uso>
-```
-
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
-
-## 📫 Contribuindo para <nome_do_projeto>
-<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
-Para contribuir com <nome_do_projeto>, siga estas etapas:
+Siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch>`.
@@ -60,23 +42,24 @@ Para contribuir com <nome_do_projeto>, siga estas etapas:
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## 🤝 Colaboradores
+## 🤝 Autor
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+Pessoa que realizou as respostas dos exercícios para este projeto:
 
 <table>
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="https://i.ibb.co/BfDNfjx/foto-wellington.png" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
         <sub>
           <b>Iuri Silva</b>
         </sub>
       </a>
     </td>
+  </tr>
+    </table>
   
-
-## 😄 Seja um dos contribuidores<br>
+## 😄 Seja um dos contribuidores
 
 Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
 
@@ -84,4 +67,4 @@ Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contr
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
 
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+[⬆ Voltar ao topo](#nome-do-projeto)
