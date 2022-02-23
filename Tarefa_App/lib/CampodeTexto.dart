@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Home.dart';
-import 'ListaTarefa.dart';
 
 class CampodeTexto extends StatelessWidget {
-  const CampodeTexto({this.label, this.hint, this.icone, this.imput});
+  const CampodeTexto({this.label, this.hint, this.icone, this.imput, Key? key})
+      : super(key: key);
   final String? label;
   final String? hint;
   final IconData? icone;
@@ -24,7 +23,7 @@ class CampodeTexto extends StatelessWidget {
         elevation: 5,
         shadowColor: Colors.green[900],
         child: Container(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: TextField(
             controller: imput,
             style: const TextStyle(
@@ -36,7 +35,7 @@ class CampodeTexto extends StatelessWidget {
                   color: Colors.green,
                   size: 30,
                 ),
-                labelStyle: TextStyle(color: Colors.black),
+                labelStyle: const TextStyle(color: Colors.black),
                 hintText: hint,
                 labelText: label),
           ),

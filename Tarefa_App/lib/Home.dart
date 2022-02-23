@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'ListaTarefa.dart';
-import 'main.dart';
 import 'ReceberTarefa.dart';
 import 'AddTarefa.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -49,6 +48,7 @@ class _HomeState extends State<Home> {
                 setState(() {
                   _tarefas.add(tarefas);
                 });
+                return null;
               });
             },
             splashColor: Colors.amber[50],

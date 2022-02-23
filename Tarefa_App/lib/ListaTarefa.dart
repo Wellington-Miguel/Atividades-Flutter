@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'ReceberTarefa.dart';
-import 'main.dart';
 
 class ListaTarefa extends StatelessWidget {
   final ReceberTarefa _receberTarefa;
-  ListaTarefa(this._receberTarefa);
+
+  const ListaTarefa(this._receberTarefa, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
