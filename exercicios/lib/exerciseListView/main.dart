@@ -1,7 +1,6 @@
+import 'package:exercicio/exerciseListView/dark_mode.dart';
 import 'package:flutter/material.dart';
 
-import 'lista_infinita.dart';
-
 void main() {
-  runApp(const ListaInfinita());
+  runApp(const DarkMode());
 }

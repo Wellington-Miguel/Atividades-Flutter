@@ -46,27 +46,18 @@ class ItemLista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 60,
-      margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-      decoration: BoxDecoration(color: Colors.grey[100]),
-      child: Row(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(20),
-            child: Icon(
-              Icons.star,
-              color: Colors.yellow,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 130),
-            child: Text(
-              'Ítem nº $index',
-              style: const TextStyle(fontSize: 20),
-            ),
-          ),
-        ],
+      color: Colors.grey[100],
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      child: ListTile(
+        leading: const Icon(
+          Icons.star,
+          color: Colors.yellow,
+        ),
+        title: Text(
+          'Ítem nº $index',
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
