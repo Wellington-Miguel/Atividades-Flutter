@@ -27,7 +27,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Para acessar os exercícios, siga estas etapas:
 
 - Faça o clone do repositório
-- Cada grupo de exercício terá  seu próprio modo de execusão, consulte o README.md de cada  pasta.
+- Cada grupo de exercício terá  seu próprio modo de execusão, consulte o README.md de cada pasta de exercícios, lá vocÊ irá encontrar mais informaões sobre cada questão e como executar o código que a soluciona.
 
 
 ## 📫 Contribuindo para Diário de bordo - Flutter
@@ -50,7 +50,7 @@ Pessoa que realizou as respostas dos exercícios para este projeto:
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://i.ibb.co/BfDNfjx/foto-wellington.png" width="100px;" alt="Foto do WellingtonMiguel no GitHub"/><br>
+        <img src="https://i.ibb.co/BfDNfjx/foto-wellington.png" width="100px;" alt="Foto do Wellington Miguel no GitHub"/><br>
         <sub>
           <b>WellingtonMiguel</b>
         </sub>
