@@ -1,6 +1,6 @@
-import 'package:exercicio/exerciseListView/dark_mode.dart';
+import 'package:exercicio/exerciseListView/grades_grids.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const DarkMode());
+  runApp(const GradesGrids());
 }

@@ -53,7 +53,7 @@ class Boca extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Container(
           color: Colors.red,
-          height: 300,
+          height: 165,
           child: GridView.count(
             padding: const EdgeInsets.all(20),
             childAspectRatio: 0.6,
@@ -82,7 +82,7 @@ class Testa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 100,
       color: Colors.green,
     );
   }
