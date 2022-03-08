@@ -11,4 +11,13 @@ class Words {
   static String sectionPersonalData = "Dados pessoais";
   static String sectionContact = "Receber notificações por:";
   static String terms = "Aceita nossos termos e condições?";
+  static String erromandatory = "Esse campo é obrigatório!";
+  static String erroEmail = "Esse e-mail não é válido!";
+  static String erroFullName = "Digite seu nome completo";
+  static String erroPhone = "Telefone inválido";
+  static String erroTerms = "Aceite os termos";
+  static String passwordHelp =
+      "Mínimo 8 caracteres, 1 letra maiúscula, 1 letra minúscula";
+  static String passwordConditions =
+      "Sua senha não atende aos requisitos mínimos";
 }
