@@ -17,17 +17,31 @@ class _HomeState extends State<Home> {
   int pontos = 0;
   int time = 15;
   String wordPass = '';
+  String randomWord = '';
 
   Future<void> countdown() async {
     for (int i = time; i >= 0; i--) {
       await Future.delayed(const Duration(seconds: 1));
-
-      setState(() {
+      if (i == 0) {
+        startGame = false;
+        time = 15;
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Center(
+                  child: Text(
+                'Você acertou $pontos palavras!',
+              )),
+            );
+          },
+        );
+      } else {
         time = i;
-        if (i == 0) {
-          startGame = false;
-          time = 15;
-        }
+      }
+      setState(() {
+        startGame;
+        time;
       });
     }
   }
@@ -57,28 +71,27 @@ class _HomeState extends State<Home> {
           ElevatedButton(
             onPressed: startGame
                 ? (() {
-                    final word = wordsList[3];
                     wordPass = wordController.text;
-                    debugPrint(wordPass);
-                    debugPrint(word);
-                    setState(() {
-                      if (wordPass == word) {
-                        startGame = false;
+
+                    if (randomWord == wordPass) {
+                      setState(() {
                         pontos += 1;
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const AlertDialog(
-                              title: Center(
-                                  child: Text(
-                                'Você errou',
-                              )),
-                            );
-                          },
-                        );
-                      }
-                    });
+                      });
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const AlertDialog(
+                            title: Center(
+                                child: Text(
+                              'Você errou',
+                            )),
+                          );
+                        },
+                      );
+                    }
+                    randomWord = wordsList[selectWord.nextInt(12)];
+                    debugPrint(randomWord);
                   })
                 : null,
             child: const Text('Enviar palavra'),
@@ -89,7 +102,10 @@ class _HomeState extends State<Home> {
               onPressed: startGame
                   ? null
                   : (() {
+                      randomWord = wordsList[selectWord.nextInt(12)];
+                      debugPrint(randomWord);
                       setState(() {
+                        wordPass;
                         startGame = true;
                         countdown();
                       });
