@@ -1,4 +1,4 @@
-import 'package:exercicio/exerciseLocation/topics/geoLocalizator/t04_wonderful_cities.dart';
+import 'package:exercicio/exerciseAulaLocation/topics/geoLocalizator/home.dart';
 import 'package:flutter/material.dart';
 
 import '../../resources/strings.dart';

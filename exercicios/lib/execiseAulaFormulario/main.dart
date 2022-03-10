@@ -1,5 +1,5 @@
-import 'package:exercicio/execiseFormulario/pages/form.dart';
-import 'package:exercicio/execiseFormulario/resouces/theme.dart';
+import 'package:exercicio/execiseAulaFormulario/pages/form.dart';
+import 'package:exercicio/execiseAulaFormulario/resouces/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {

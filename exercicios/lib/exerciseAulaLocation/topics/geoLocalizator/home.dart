@@ -1,5 +1,5 @@
-import 'package:exercicio/exerciseLocation/components/geolocation_error.dart';
-import 'package:exercicio/exerciseLocation/topics/geolocation.dart';
+import 'package:exercicio/exerciseAulaLocation/components/geolocation_error.dart';
+import 'package:exercicio/exerciseAulaLocation/topics/geolocation.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/title.dart';
@@ -19,6 +19,14 @@ class WonderfulCities extends StatefulWidget {
 
 class _WonderfulCitiesState extends State<WonderfulCities> {
   final geolocation = Geolocation();
+  late Future<bool> hasPemission;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    hasPemission = geolocation.checkPermission();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -37,11 +45,12 @@ class _WonderfulCitiesState extends State<WonderfulCities> {
         ],
       ),
       body: FutureBuilder<bool>(
-        future: geolocation.checkPermission(),
+        future: hasPemission,
         builder: (
           context,
           snapshot,
         ) {
+          debugPrint(snapshot.toString());
           if (snapshot.connectionState == ConnectionState.done) {
             final connection = snapshot.data;
             if (connection != null && connection) {
@@ -52,9 +61,11 @@ class _WonderfulCitiesState extends State<WonderfulCities> {
               title: Strings.errorLocationPermissionTitle,
               description: Strings.errorLocationPermissionDescription,
               actionText: Strings.enableLocationService,
-              action: () {
-                geolocation.requestPermission().then((connection) {
-                  setState(() {});
+              action: () async {
+                final permission = await geolocation.requestPermission();
+
+                setState(() {
+                  hasPemission = Future.value(permission);
                 });
               },
             );

@@ -1,5 +1,5 @@
-import 'package:exercicio/execiseFormulario/Components/checkBoxContact.dart';
-import 'package:exercicio/execiseFormulario/resouces/strings.dart';
+import 'package:exercicio/execiseAulaFormulario/Components/checkBoxContact.dart';
+import 'package:exercicio/execiseAulaFormulario/resouces/strings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
