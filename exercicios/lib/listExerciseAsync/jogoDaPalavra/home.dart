@@ -25,7 +25,8 @@ class _HomeState extends State<Home> {
       if (i == 0) {
         startGame = false;
         time = 15;
-        showDialog(
+        wordController.text = '';
+        await showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
@@ -36,6 +37,7 @@ class _HomeState extends State<Home> {
             );
           },
         );
+        pontos = 0;
       } else {
         time = i;
       }
@@ -92,6 +94,7 @@ class _HomeState extends State<Home> {
                     }
                     randomWord = wordsList[selectWord.nextInt(12)];
                     debugPrint(randomWord);
+                    wordController.text = '';
                   })
                 : null,
             child: const Text('Enviar palavra'),
@@ -124,7 +127,25 @@ class _HomeState extends State<Home> {
                 textAlign: TextAlign.center,
               ),
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: TextButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return const AlertDialog(
+                      title: Text('Manual de jogo'),
+                      content: Text(
+                          'Clique no botão "Start game" para iniciar o jogo. Logo após, você terá 15 segundo para acertar as palavras secretas!'),
+                    );
+                  },
+                );
+              },
+              child: const Text('Precisa de ajuda?'),
+            ),
+          ),
         ],
       )),
     );
