@@ -1,3 +1,4 @@
+import 'package:exercicio/exercise_state_management/app_task/componets/inputBottomSheet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,7 +8,7 @@ class CardBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 261,
+      height: 361,
       width: 425,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -18,26 +19,16 @@ class CardBottomSheet extends StatelessWidget {
               style: GoogleFonts.actor(fontSize: 20),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                isDense: true,
-                label: Text('Título'),
-              ),
-            ),
+          InputBottomSheet(
+            label: 'Título',
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                isDense: true,
-                label: Text('Tarefa'),
-              ),
-            ),
-          )
+          InputBottomSheet(
+            label: 'Tarefa',
+          ),
+          InputBottomSheet(
+            label: 'Data',
+          ),
+          ElevatedButton(onPressed: () {}, child: const Text('Adicionar'))
         ],
       ),
     );
