@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CardTask extends StatelessWidget {
-  const CardTask({Key? key}) : super(key: key);
+  CardTask(
+      {required this.title, required this.task, required this.date, Key? key})
+      : super(key: key);
+  String title;
+  String task;
+  MaskTextInputFormatter date;
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +30,20 @@ class CardTask extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Title',
+                        title,
                         style: GoogleFonts.lato(fontSize: 20),
                       ),
                       IconButton(
                           onPressed: () {}, icon: const Icon(Icons.close))
                     ],
                   ),
-                  Text('Tarefa', style: GoogleFonts.lato(fontSize: 16)),
+                  Text(task, style: GoogleFonts.lato(fontSize: 16)),
                   Row(
-                    children: const [
-                      Icon(Icons.timer_rounded),
+                    children: [
+                      const Icon(Icons.timer_rounded),
                       Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text('data'),
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(date.toString()),
                       ),
                     ],
                   )

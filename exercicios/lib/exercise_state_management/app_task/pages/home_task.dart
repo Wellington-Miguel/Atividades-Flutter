@@ -1,3 +1,5 @@
+import 'package:exercicio/exercise_state_management/app_task/bloc/taskBloc.dart';
+import 'package:exercicio/exercise_state_management/app_task/bloc/taskState.dart';
 import 'package:exercicio/exercise_state_management/app_task/bloc/theme_cubit.dart';
 import 'package:exercicio/exercise_state_management/app_task/componets/bottomsheet.dart';
 import 'package:exercicio/exercise_state_management/app_task/componets/card.dart';
@@ -32,7 +34,19 @@ class HomeTask extends StatelessWidget {
             )
           ],
         ),
-        body: const CardTask(),
+        body: BlocBuilder<TaskBloc, TaskState>(
+          builder: (context, state) {
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return CardTask(
+                  title: state.listTask[index].title,
+                  task: state.listTask[index].objective,
+                  date: state.listTask[index].deadline,
+                );
+              },
+            );
+          },
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => showModalBottomSheet(
               useRootNavigator: true,

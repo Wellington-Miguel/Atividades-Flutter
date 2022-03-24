@@ -1,17 +1,31 @@
+import 'package:exercicio/exercise_state_management/app_task/bloc/taskBloc.dart';
+import 'package:exercicio/exercise_state_management/app_task/bloc/taskState.dart';
 import 'package:exercicio/exercise_state_management/app_task/bloc/theme_cubit.dart';
+import 'package:exercicio/exercise_state_management/app_task/model/task.dart';
 import 'package:exercicio/exercise_state_management/app_task/pages/home_task.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(
-    BlocProvider(
-      create: (context) {
-        final initialTheme =
-            WidgetsBinding.instance?.window.platformBrightness ??
-                Brightness.light;
-        return ThemeModeCubit(initialTheme);
-      },
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            final initialTheme =
+                WidgetsBinding.instance?.window.platformBrightness ??
+                    Brightness.light;
+            return ThemeModeCubit(initialTheme);
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            List<Task> listTask = [];
+            final inicialState = TaskState(listTask: listTask);
+            return TaskBloc(inicialState);
+          },
+        ),
+      ],
       child: BlocBuilder<ThemeModeCubit, ThemeData>(
         builder: (context, themeTaskState) {
           return MaterialApp(
