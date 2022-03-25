@@ -13,53 +13,67 @@ class HomeTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'My task',
-            style: GoogleFonts.abel(),
-          ),
-          leading: const Icon(Icons.task),
-          actions: [
-            IconButton(
-              splashRadius: 10,
-              onPressed: BlocProvider.of<ThemeModeCubit>(context).changeTheme,
-              icon: BlocBuilder<ThemeModeCubit, ThemeData>(
-                builder: (context, themeState) {
-                  return Icon(themeState == ThemeTask.taskThemeLigth
-                      ? Icons.dark_mode
-                      : Icons.light_mode);
-                },
+    return BlocBuilder<TaskBloc, TaskState>(
+      builder: (context, state) {
+        return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                'My task',
+                style: GoogleFonts.abel(),
               ),
-            )
-          ],
-        ),
-        body: BlocBuilder<TaskBloc, TaskState>(
-          builder: (context, state) {
-            return ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return CardTask(
-                  title: state.listTask[index].title,
-                  task: state.listTask[index].objective,
-                  date: state.listTask[index].deadline,
+              leading: const Icon(Icons.task),
+              actions: [
+                IconButton(
+                  splashRadius: 10,
+                  onPressed:
+                      BlocProvider.of<ThemeModeCubit>(context).changeTheme,
+                  icon: BlocBuilder<ThemeModeCubit, ThemeData>(
+                    builder: (context, themeState) {
+                      return Icon(themeState == ThemeTask.taskThemeLigth
+                          ? Icons.dark_mode
+                          : Icons.light_mode);
+                    },
+                  ),
+                )
+              ],
+            ),
+            body: BlocBuilder<TaskBloc, TaskState>(
+              builder: (context, state) {
+                return ListView.builder(
+                  itemCount: state.listTask.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (state.listTask.isNotEmpty) {
+                      return CardTask(
+                        title: state.listTask[index].title,
+                        task: state.listTask[index].objective,
+                        date: state.listTask[index].deadline,
+                      );
+                    } else {
+                      return CardTask(
+                        title: '',
+                        task: '',
+                        date: '',
+                      );
+                    }
+                  },
                 );
               },
-            );
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => showModalBottomSheet(
-              useRootNavigator: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(40),
-                ),
-              ),
-              context: context,
-              builder: (context) {
-                return const CardBottomSheet();
-              }),
-          child: const Icon(Icons.add),
-        ));
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => showModalBottomSheet(
+                  useRootNavigator: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(40),
+                    ),
+                  ),
+                  context: context,
+                  builder: (context) {
+                    return const CardBottomSheet();
+                  }),
+              child: const Icon(Icons.add),
+            ));
+      },
+    );
   }
 }

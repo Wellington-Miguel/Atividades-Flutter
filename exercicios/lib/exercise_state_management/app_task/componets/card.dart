@@ -8,7 +8,11 @@ class CardTask extends StatelessWidget {
       : super(key: key);
   String title;
   String task;
-  MaskTextInputFormatter date;
+  String date;
+  MaskTextInputFormatter deadline = MaskTextInputFormatter(
+    mask: '##/##/####',
+    filter: {"#": RegExp(r'[0-9]')},
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class CardTask extends StatelessWidget {
                       const Icon(Icons.timer_rounded),
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Text(date.toString()),
+                        child: Text(deadline.maskText(date)),
                       ),
                     ],
                   )
