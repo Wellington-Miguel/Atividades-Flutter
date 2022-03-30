@@ -1,8 +1,8 @@
-import 'package:exercicio/exercise_state_management/app_task/bloc/taskBloc.dart';
-import 'package:exercicio/exercise_state_management/app_task/bloc/taskState.dart';
-import 'package:exercicio/exercise_state_management/app_task/bloc/theme_cubit.dart';
-import 'package:exercicio/exercise_state_management/app_task/model/task.dart';
-import 'package:exercicio/exercise_state_management/app_task/pages/home_task.dart';
+import 'package:exercicio/exercise_app_task/bloc/taskBloc.dart';
+import 'package:exercicio/exercise_app_task/bloc/taskState.dart';
+import 'package:exercicio/exercise_app_task/bloc/theme_cubit.dart';
+import 'package:exercicio/exercise_app_task/model/task.dart';
+import 'package:exercicio/exercise_app_task/pages/home_task.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

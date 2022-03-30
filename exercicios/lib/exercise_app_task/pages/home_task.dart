@@ -1,9 +1,9 @@
-import 'package:exercicio/exercise_state_management/app_task/bloc/taskBloc.dart';
-import 'package:exercicio/exercise_state_management/app_task/bloc/taskState.dart';
-import 'package:exercicio/exercise_state_management/app_task/bloc/theme_cubit.dart';
-import 'package:exercicio/exercise_state_management/app_task/componets/bottomsheet.dart';
-import 'package:exercicio/exercise_state_management/app_task/componets/card.dart';
-import 'package:exercicio/exercise_state_management/app_task/resouces/theme.dart';
+import 'package:exercicio/exercise_app_task/bloc/taskBloc.dart';
+import 'package:exercicio/exercise_app_task/bloc/taskState.dart';
+import 'package:exercicio/exercise_app_task/bloc/theme_cubit.dart';
+import 'package:exercicio/exercise_app_task/componets/bottomsheet.dart';
+import 'package:exercicio/exercise_app_task/componets/card.dart';
+import 'package:exercicio/exercise_app_task/resouces/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';

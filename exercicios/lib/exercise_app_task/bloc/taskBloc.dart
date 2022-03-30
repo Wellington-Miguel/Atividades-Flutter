@@ -1,5 +1,5 @@
-import 'package:exercicio/exercise_state_management/app_task/bloc/taskEvent.dart';
-import 'package:exercicio/exercise_state_management/app_task/bloc/taskState.dart';
+import 'package:exercicio/exercise_app_task/bloc/taskEvent.dart';
+import 'package:exercicio/exercise_app_task/bloc/taskState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TaskBloc extends Bloc<TaskEvent, TaskState> {

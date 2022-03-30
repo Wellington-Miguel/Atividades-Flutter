@@ -1,4 +1,4 @@
-import 'package:exercicio/exercise_state_management/app_task/model/task.dart';
+import 'package:exercicio/exercise_app_task/model/task.dart';
 
 abstract class TaskEvent {
   const TaskEvent();
