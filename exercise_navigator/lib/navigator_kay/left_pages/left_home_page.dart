@@ -1,5 +1,5 @@
-import 'package:exercise_navigator/aula_exercise_navigator/navigator_kay/rigth_pages/rigth_home_page.dart';
-import 'package:exercise_navigator/aula_exercise_navigator/navigator_kay/rigth_pages/rigth_secund_page.dart';
+import 'package:exercise_navigator/navigator_kay/rigth_pages/rigth_home_page.dart';
+import 'package:exercise_navigator/navigator_kay/rigth_pages/rigth_secund_page.dart';
 import 'package:flutter/material.dart';
 
 class LeftHomePage extends StatelessWidget {

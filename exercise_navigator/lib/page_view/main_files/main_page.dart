@@ -1,18 +1,17 @@
-import 'package:exercise_navigator/aula_exercise_navigator/navigator_kay/left_pages/left_home_page.dart';
-import 'package:exercise_navigator/aula_exercise_navigator/navigator_kay/rigth_pages/rigth_home_page.dart';
+import 'package:exercise_navigator/page_view/left_pages/left_home_page.dart';
+import 'package:exercise_navigator/page_view/rigth_pages/rigth_page_view.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatelessWidget {
-  MainPage({Key? key}) : super(key: key);
-  final GlobalKey<NavigatorState> _leftPage = GlobalKey();
-  final GlobalKey<NavigatorState> _rigthPage = GlobalKey();
-  late BuildContext contextTwo;
+class MainPageView extends StatelessWidget {
+  MainPageView({Key? key}) : super(key: key);
+  final PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Double interfaces',
+          'Double interfaces with PageView',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.grey[850],
@@ -22,22 +21,21 @@ class MainPage extends StatelessWidget {
           SizedBox(
             width: 100,
             child: Navigator(
-              key: _leftPage,
               onGenerateRoute: (settings) {
                 return PageRouteBuilder(
                     pageBuilder: (_, __, ___) => LeftHomePage(
-                          leftPage: _rigthPage,
+                          pageController: pageController,
                         ));
               },
             ),
           ),
           Expanded(
             child: Navigator(
-              key: _rigthPage,
               onGenerateRoute: (settings) {
                 return PageRouteBuilder(pageBuilder: (context2, __, ___) {
-                  contextTwo = context2;
-                  return const RightHomePage();
+                  return RightPageView(
+                    pageController: pageController,
+                  );
                 });
               },
             ),
