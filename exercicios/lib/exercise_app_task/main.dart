@@ -13,8 +13,8 @@ void main() {
         BlocProvider(
           create: (context) {
             final initialTheme =
-                WidgetsBinding.instance?.window.platformBrightness ??
-                    Brightness.light;
+                WidgetsBinding.instance.window.platformBrightness == Brightness.dark ?
+                    Brightness.light : Brightness.dark;
             return ThemeModeCubit(initialTheme);
           },
         ),
