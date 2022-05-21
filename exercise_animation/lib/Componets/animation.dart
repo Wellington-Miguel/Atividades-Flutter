@@ -14,12 +14,12 @@ class AnimationOnboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(top: 150),
       child: LottieBuilder.asset(
         animations[index],
         controller: controller,
-        width: 50,
-        height: 50,
+        width: 200,
+        height: 200,
       ),
     );
   }

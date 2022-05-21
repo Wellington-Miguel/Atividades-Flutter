@@ -54,7 +54,8 @@ class _TaskOnboardingState extends State<TaskOnboarding>
       title: 'TaskOnboarding',
       home: Scaffold(
         body: Center(
-          child: ListView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AnimationOnboarding(
                 controller: mainAnimation,

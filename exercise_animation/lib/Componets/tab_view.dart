@@ -5,11 +5,13 @@ class TabView extends StatelessWidget {
   final TabController? tabController;
   @override
   Widget build(BuildContext context) {
-    return TabPageSelector(
-      controller: tabController,
-      indicatorSize: 10,
-      color: Colors.white,
-      selectedColor: Colors.amber[800],
+    return Center(
+      child: TabPageSelector(
+        controller: tabController,
+        indicatorSize: 10,
+        color: Colors.white,
+        selectedColor: Colors.blue[800],
+      ),
     );
   }
 }

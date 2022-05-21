@@ -6,8 +6,13 @@ class TitleTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Center(child: Text(title)),
+      padding: const EdgeInsets.fromLTRB(40, 10, 40, 0),
+      child: Center(
+          child: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 12),
+      )),
     );
   }
 }

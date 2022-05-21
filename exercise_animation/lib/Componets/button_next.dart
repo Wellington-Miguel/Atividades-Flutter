@@ -8,8 +8,8 @@ class ButtonNext extends StatelessWidget {
   Widget build(BuildContext context) {
     return LottieBuilder.network(
       'https://assets2.lottiefiles.com/packages/lf20_yjbzqbqb.json',
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
     );
   }
 }
