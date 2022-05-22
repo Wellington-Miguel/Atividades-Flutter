@@ -8,11 +8,12 @@ class AnimationOnboarding extends StatelessWidget {
   int index;
   final List<String> animations = [
     'asset/home_amiated.zip',
-    'asset/share_amiated.zip',
-    'asset/complet_animed.zip',
+    'asset/share.zip',
+    'asset/complete.zip',
   ];
   @override
   Widget build(BuildContext context) {
+    debugPrint(animations[index]);
     return Padding(
       padding: const EdgeInsets.only(top: 150),
       child: LottieBuilder.asset(

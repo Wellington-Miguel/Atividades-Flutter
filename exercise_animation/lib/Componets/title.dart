@@ -11,7 +11,7 @@ class TitleTab extends StatelessWidget {
           child: Text(
         title,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 12),
+        style: const TextStyle(fontSize: 12, color: Colors.white),
       )),
     );
   }

@@ -2,7 +2,9 @@ import 'package:exercise_animation/Componets/animation.dart';
 import 'package:exercise_animation/Componets/button_next.dart';
 import 'package:exercise_animation/Componets/tab_view.dart';
 import 'package:exercise_animation/Componets/title.dart';
+import 'package:exercise_animation/mobx/controller_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class TaskOnboarding extends StatefulWidget {
   const TaskOnboarding({Key? key}) : super(key: key);
@@ -19,11 +21,12 @@ class _TaskOnboardingState extends State<TaskOnboarding>
   late AnimationController buttonAnimation;
 
   late TabController tabController;
+  final controllerPage = ControllerPage();
   @override
   void initState() {
     mainAnimation = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 4),
     )..repeat();
     buttonAnimation = AnimationController(
       vsync: this,
@@ -42,9 +45,9 @@ class _TaskOnboardingState extends State<TaskOnboarding>
   }
 
   final List<String> title = [
-    'Planeje suas tarefas!'
-        'Compartilhe com os amigos!'
-        'Cumpra suas metas!'
+    'Planeje suas tarefas!',
+    'Compartilhe com os amigos!',
+    'Cumpra suas metas!',
   ];
 
   @override
@@ -53,34 +56,57 @@ class _TaskOnboardingState extends State<TaskOnboarding>
       debugShowCheckedModeBanner: false,
       title: 'TaskOnboarding',
       home: Scaffold(
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AnimationOnboarding(
-                controller: mainAnimation,
-                index: page,
-              ),
-              TabView(tabController: tabController),
-              AnimatedBuilder(
-                animation: mainAnimation,
-                builder: (BuildContext context, Widget? child) {
-                  return TitleTab(title: title[page]);
+        backgroundColor: Colors.green[800],
+        body: Stack(children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: IconButton(
+                onPressed: () {
+                  controllerPage.decrement();
+                  print(controllerPage.page);
+                  tabController.animateTo(controllerPage.page);
                 },
-              ),
-              GestureDetector(
-                  onTap: page < 3
-                      ? () async {
-                          page += 1;
-                          await buttonAnimation.forward();
-                          tabController.animateTo(page);
-                          mainAnimation.forward();
-                        }
-                      : null,
-                  child: ButtonNext(buttonController: buttonAnimation))
-            ],
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                )),
           ),
-        ),
+          Center(
+            child: Observer(
+              builder: (BuildContext context) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AnimationOnboarding(
+                      controller: mainAnimation,
+                      index: controllerPage.page,
+                    ),
+                    TabView(tabController: tabController),
+                    AnimatedBuilder(
+                      animation: mainAnimation,
+                      builder: (BuildContext context, Widget? child) {
+                        return TitleTab(title: title[controllerPage.page]);
+                      },
+                    ),
+                    controllerPage.page == 2
+                        ? Text('')
+                        : GestureDetector(
+                            onTap: () async {
+                              await buttonAnimation.forward();
+                              buttonAnimation.reset();
+                              mainAnimation.fling();
+                              controllerPage.increment();
+                              tabController.animateTo(controllerPage.page);
+                              mainAnimation.repeat();
+                            },
+                            child:
+                                ButtonNext(buttonController: buttonAnimation))
+                  ],
+                );
+              },
+            ),
+          )
+        ]),
       ),
     );
   }

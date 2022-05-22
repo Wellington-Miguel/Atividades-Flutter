@@ -10,6 +10,7 @@ class ButtonNext extends StatelessWidget {
       'https://assets2.lottiefiles.com/packages/lf20_yjbzqbqb.json',
       width: 100,
       height: 100,
+      controller: buttonController,
     );
   }
 }
